@@ -11,7 +11,7 @@ const path = require('path')
 const app = express();
 dotenv.config();
 app.use(cors())
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 mongoose.connect(process.env.MONGO_URI).then(()=>console.log("DB connected successfully"))
 .catch((err)=>console.log(err))
@@ -26,6 +26,6 @@ app.listen(PORT,()=>{
     console.log(`server running at port ${PORT}`);
 
 })
-app.use('/home',(req,res)=>{
-    res.send("<h1> Welcome to Class")
+app.use('/',(req,res)=>{
+    res.send("<h1> This is Home Page")
 })
